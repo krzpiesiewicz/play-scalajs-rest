@@ -1,0 +1,20 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET        /                             controllers.Application.index
+GET        /reader/:id                   controllers.Application.reader(id: Long)
+GET        /books                        controllers.Application.books
+
++ nocsrf
+POST       /reader/save                  controllers.Application.saveReader
+
+GET        /play/reader/:id              controllers.PlayJsonController.reader(id: Long)
+GET        /play/books                   controllers.PlayJsonController.books
+
++ nocsrf
+POST       /play/reader/save             controllers.PlayJsonController.saveReader
+
+# Prefix must match `play.assets.urlPrefix`
+GET        /assets/*file                 controllers.Assets.at(file)
+GET        /versionedAssets/*file        controllers.Assets.versioned(path="/public", file: Asset)
